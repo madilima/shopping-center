@@ -5,21 +5,24 @@ public class Loja {
     private float salarioBaseFuncionario;
     private Endereco endereco;
     private Data dataFundacao;
+    private Produto[] estoqueProdutos;
 
-    public Loja(String nome, int quantidadeFuncionarios, float salarioBaseFuncionario, Endereco endereco, Data dataFundacao) {
+    public Loja(String nome, int quantidadeFuncionarios, float salarioBaseFuncionario, Endereco endereco, Data dataFundacao, int quantidadeMaximaProdutos) {
         this.nome = nome;
         this.quantidadeFuncionarios = quantidadeFuncionarios;
         this.salarioBaseFuncionario = salarioBaseFuncionario;
         this.endereco = endereco;
         this.dataFundacao = dataFundacao;
+        this.estoqueProdutos = new Produto[quantidadeMaximaProdutos];
     }
 
-    public Loja(String nome, int quantidadeFuncionarios, Endereco endereco, Data dataFundacao) {
+    public Loja(String nome, int quantidadeFuncionarios, Endereco endereco, Data dataFundacao, int quantidadeMaximaProdutos) {
         this.nome = nome;
         this.quantidadeFuncionarios = quantidadeFuncionarios;
         this.salarioBaseFuncionario = -1;
         this.endereco = endereco;
         this.dataFundacao = dataFundacao;
+        this.estoqueProdutos = new Produto[quantidadeMaximaProdutos];
     }
 
     public String getNome() {
@@ -70,6 +73,40 @@ public class Loja {
         string += "Data de fundação: " + this.dataFundacao + "\n";
 
         return string;
+    }
+
+    public Produto[] getEstoqueProdutos() {
+        return estoqueProdutos;
+    }
+
+    public void imprimeProdutos() {
+        for (int i = 0; i < this.estoqueProdutos.length; i++) {
+            if (this.estoqueProdutos[i] != null) {
+                System.out.println(this.estoqueProdutos[i]);
+            }
+        }
+    }
+
+    public boolean insereProduto(Produto produto) {
+        for (int i = 0; i < this.estoqueProdutos.length; i++) {
+            if (this.estoqueProdutos[i] == null) {
+                this.estoqueProdutos[i] = produto;
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    public boolean removeProduto(String nome) {
+        for (int i = 0; i < this.estoqueProdutos.length; i++) {
+            if (this.estoqueProdutos[i] != null && this.estoqueProdutos[i].getNome().equals(nome)) {
+                this.estoqueProdutos[i] = null;
+                return true;
+            }
+        }
+
+        return false;
     }
 
     public float gastosComSalario() {

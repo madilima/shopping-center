@@ -1,13 +1,13 @@
 public class Informatica extends Loja {
 
     private double seguroEletronicos;
-    public Informatica(String nome, int quantidadeFuncionarios, float salarioBaseFuncionario, Endereco endereco, Data dataFundacao, double seguroEletronicos) {
-        super(nome, quantidadeFuncionarios, salarioBaseFuncionario, endereco, dataFundacao);
+    public Informatica(String nome, int quantidadeFuncionarios, float salarioBaseFuncionario, Endereco endereco, Data dataFundacao, double seguroEletronicos, int quantidadeMaximaProdutos) {
+        super(nome, quantidadeFuncionarios, salarioBaseFuncionario, endereco, dataFundacao, quantidadeMaximaProdutos);
         this.seguroEletronicos = seguroEletronicos;
     }
 
     public double getSeguroEletronicos() {
-        return seguroEletronicos;
+        return this.seguroEletronicos;
     }
 
     public void setSeguroEletronicos(double seguroEletronicos) {
